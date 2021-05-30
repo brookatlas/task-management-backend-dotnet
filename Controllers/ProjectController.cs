@@ -23,11 +23,15 @@ namespace task_management_backend_dotnet.Controllers
         {
             try
             {
-                return _projectContext.Projects.ToList<Project>();   
+                var result = _projectContext.Projects.ToList<Project>();
+                return Ok(result);
             }
             catch (System.Exception)
             {
-                throw;
+                var error = new Dictionary<string,string>() {
+                    {"error", "could not retrieve the projects data properly."}
+                };
+                return StatusCode(500, error);
             }
         }
 
@@ -39,45 +43,69 @@ namespace task_management_backend_dotnet.Controllers
                 var MatchingProject =_projectContext.Projects.Single(
                     p => p.ProjectId == id
                 );
-                return MatchingProject;
+                return Ok(MatchingProject);
             }
-            catch (System.Exception)
+            catch (System.InvalidOperationException)
             {
-                throw;
+                var error = new Dictionary<string, string>(){
+                    {"error", $"project with id {id} was not found"}
+                };
+                return NotFound(error);
             }
         }
 
         [HttpPost("")]
         public ActionResult<Project> Create(Project model)
         {
+            Project MatchingProject = null;
             try
+            {
+                MatchingProject =_projectContext.Projects.Single(
+                    p => p.name == model.name
+                );
+                var error = new Dictionary<string,string>(){
+                    {"error", $"project named {model.name} already exists."}
+                };
+                return Conflict(error);
+            }
+            catch (System.InvalidOperationException)
             {
                 _projectContext.Projects.Add(model);
                 _projectContext.SaveChanges();
-                return model;   
-            }
-            catch (System.Exception)
-            {
-                throw;
+                return Ok(model);
             }
         }
 
         [HttpPatch("{id}")]
         public ActionResult<Project> Update(int id, Project model)
         {
+            Project MatchingProject = null;
             try
             {
-                var MatchingProject = _projectContext.Projects.Single(
+                MatchingProject = _projectContext.Projects.Single(
                     p => p.ProjectId == id
                 );
+            }
+            catch (System.InvalidOperationException)
+            {
+                var error = new Dictionary<string, string>(){
+                    {"error", $"project with id {id} was not found"}
+                };
+                return NotFound(error);
+            }
+            try
+            {
                 MatchingProject.creationTime = model.creationTime;
                 MatchingProject.name = model.name;
                 _projectContext.SaveChanges();
-                return MatchingProject;
+                return Ok(MatchingProject);   
             }
             catch (System.Exception)
             {
-                return null;
+                var error = new Dictionary<string, string>(){
+                    {"error", $"could not update the project properly"}
+                };
+                return StatusCode(500, error);
             }
         }
 
@@ -93,9 +121,12 @@ namespace task_management_backend_dotnet.Controllers
                 _projectContext.SaveChanges(); 
                 return MatchingProject;
             }
-            catch (System.Exception)
+            catch (System.InvalidOperationException)
             {
-                return null;
+                var error = new Dictionary<string, string>(){
+                    {"error", $"project with id {id} was not found"}
+                };
+                return NotFound(error);
             }
         }
     }
