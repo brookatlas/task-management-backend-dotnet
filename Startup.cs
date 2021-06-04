@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
+using task_management_backend_dotnet.Services;
 
 namespace task_management_backend_dotnet
 {
@@ -22,6 +22,7 @@ namespace task_management_backend_dotnet
         {
             // var ConnectionString = Configuration.GetConnectionString("TaskManagementDatabase");
             services.AddControllers();
+            services.AddScoped<ProjectService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "task_management_backend_dotnet", Version = "v1" });
