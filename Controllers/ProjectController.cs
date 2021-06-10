@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using task_management_backend_dotnet.Services;
+using task_management_backend_dotnet.Models;
 
 namespace task_management_backend_dotnet.Controllers
 {
@@ -24,7 +25,7 @@ namespace task_management_backend_dotnet.Controllers
                 var result = _projectService.Get();
                 return Ok(result);   
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 return StatusCode(500, new Dictionary<string, string>(){
                     {"error", "could not retrieve the projects correctly."}

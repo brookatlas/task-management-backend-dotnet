@@ -2,16 +2,29 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace task_management_backend_dotnet
+namespace task_management_backend_dotnet.Models
 {
 
     public class ProjectContext: DbContext
     {
+        private string _connectionString;
         public DbSet<Project> Projects {get;set;}
+        public ProjectContext(string? connectionString = null)
+        {
+            if(connectionString == null)
+            {
+                _connectionString = @"Data Source=c:\\taskManagementDb.db;";
+            }
+            else
+            {
+                _connectionString = connectionString;
+            }
+        }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options) 
-        => options.UseSqlite(@"Data Source=c:\\taskManagementDb.db;");
+         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+         {
+             optionsBuilder.UseSqlite(_connectionString);
+         }
     }
 
     public class Project
