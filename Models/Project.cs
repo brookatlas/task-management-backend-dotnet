@@ -9,11 +9,11 @@ namespace task_management_backend_dotnet.Models
     {
         private string _connectionString;
         public DbSet<Project> Projects {get;set;}
-        public ProjectContext(string? connectionString = null)
+        public ProjectContext(string connectionString = null)
         {
             if(connectionString == null)
             {
-                _connectionString = @"Data Source=c:\\taskManagementDb.db;";
+                _connectionString = @"Data Source=prod.db;";
             }
             else
             {
