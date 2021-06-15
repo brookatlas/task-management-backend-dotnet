@@ -32,5 +32,48 @@ namespace task_management_backend_dotnet.Tests
             project = _projectService.Get(3);
             Assert.Equal("myProject", project.name);
         }
+
+
+        [Fact]
+        public void TestProjectUpdate()
+        {
+            var project = new Project();
+            project.name = "myProject";
+            project.ProjectId = 3;
+            _projectService.Create(project);
+            project = null;
+            project = _projectService.Get(3);
+            Assert.Equal("myProject", project.name);
+            project.name = "myProjectUpdated";
+            _projectService.Update(project);
+            project = null;
+            project = _projectService.Get("myProjectUpdated");
+            Assert.Equal("myProjectUpdated", project.name);
+        }
+
+        [Fact]
+        public void TestProjectDelete()
+        {
+            var project = new Project();
+            project.name = "myProject";
+            project.ProjectId = 3;
+            _projectService.Create(project);
+            project = null;
+            project = _projectService.Get(3);
+            Assert.Equal("myProject", project.name);
+            project = null;
+            var deleted = _projectService.Delete(3);
+            Assert.True(deleted == true);
+            project = null;
+            try
+            {
+                project = _projectService.Get("myProject");
+                Assert.Equal(1, 0);
+            }
+            catch(ProjectNotFound)
+            {
+            }
+        }
+        
     }
 }
