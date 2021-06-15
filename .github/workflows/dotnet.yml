@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - feature/project
+      - dev
   pull_request:
     branches:
       - feature/project
+      - dev
 
 jobs:
   build:
@@ -25,3 +27,4 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+  
