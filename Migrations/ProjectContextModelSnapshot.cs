@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using task_management_backend_dotnet.Models;
 using task_management_backend_dotnet;
 
 namespace task_management_backend_dotnet.Migrations

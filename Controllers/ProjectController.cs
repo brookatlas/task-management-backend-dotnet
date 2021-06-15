@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using task_management_backend_dotnet.Services;
+using task_management_backend_dotnet.Models;
 
 namespace task_management_backend_dotnet.Controllers
 {

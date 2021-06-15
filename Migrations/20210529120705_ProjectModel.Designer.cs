@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using task_management_backend_dotnet;
+using task_management_backend_dotnet.Models;
 
 namespace task_management_backend_dotnet.Migrations
 {
