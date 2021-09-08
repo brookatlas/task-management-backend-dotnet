@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using task_management_backend_dotnet.Models;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Options;
 using task_management_backend_dotnet.Services;
 
 namespace task_management_backend_dotnet
@@ -20,8 +21,14 @@ namespace task_management_backend_dotnet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // var ConnectionString = Configuration.GetConnectionString("TaskManagementDatabase");
             services.AddControllers();
+            services.AddScoped<TaskMangementDatabaseSettings>(
+                provider => new TaskMangementDatabaseSettings(
+                    System.Environment.GetEnvironmentVariable("CONNECTION_STRING"),
+                    System.Environment.GetEnvironmentVariable("DB_COLLECTION"),
+                    System.Environment.GetEnvironmentVariable("DB_NAME")
+                )
+            );
             services.AddScoped<ProjectService>();
             services.AddSwaggerGen(c =>
             {
@@ -32,19 +39,12 @@ namespace task_management_backend_dotnet
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "task_management_backend_dotnet v1"));
-            }
-
-            app.UseHttpsRedirection();
-
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "task_management_backend_dotnet v1"));
+            //app.UseHttpsRedirection();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

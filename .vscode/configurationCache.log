@@ -1,0 +1,1 @@
+{"buildTargets":[".PHONY","build","clean","run","stop","up"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

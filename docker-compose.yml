@@ -3,10 +3,26 @@
 version: '3.4'
 
 services:
-  taskmanagementbackenddotnet:
-    image: taskmanagementbackenddotnet
+  task-management-backend:
+    image: task-management-backend-dotnet
+    container_name: task-management-backend
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment: 
+      - CONNECTION_STRING: mongodb://TaskManagement:Password1@localhost:27017/TaskManagement
+      - DB_COLLECTION: Projects
+      - DB_NAME: TaskManagement
     ports:
-      - 80:80
+      - 4000:4000
+  task-management-db:
+    image: mongo
+    container_name: task-management-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Password1
+    ports:
+      - 27017:27017
+
+  

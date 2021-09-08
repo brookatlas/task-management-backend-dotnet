@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using System.Linq;
 using System.Collections.Generic;
 using task_management_backend_dotnet.Models;
@@ -7,52 +8,32 @@ namespace task_management_backend_dotnet.Services
     public class ProjectService
     {
 
-        private ProjectContext _projectContext;
+        private TaskMangementDatabaseSettings _databaseSettings;
+        private IMongoClient _client;
+        private IMongoDatabase _database;
+        private IMongoCollection<Project> _projects;
 
-        public ProjectService(ProjectContext context = null)
+        public ProjectService(TaskMangementDatabaseSettings databaseSettings)
         {
-            if(context != null)
-            {
-                _projectContext = context;
-            }
-            else
-            {
-                _projectContext = new ProjectContext();
-            }
+            _databaseSettings = databaseSettings;
+            _client = new MongoClient(_databaseSettings._ConnectionString);
+            _database= _client.GetDatabase(databaseSettings._DatabaseName);
+            _projects = _database.GetCollection<Project>(_databaseSettings._CollectionName);
         }
 
 
         public List<Project> Get()
         {
-            var result = _projectContext.Projects.ToList<Project>();
-            return result;
-        }
-
-
-        public Project Get(int id)
-        {
-            try
-            {
-                var MatchingProject =_projectContext.Projects.Single(
-                    p => p.ProjectId == id
-                );
-                return MatchingProject;
-            }
-            catch (System.InvalidOperationException)
-            {
-                throw new ProjectNotFound(
-                    $"project with id: {id} was not found"
-                );
-            }
+            return _projects.Find<Project>(project => true).ToList();
         }
 
         public Project Get(string name)
         {
             try
             {
-                var MatchingProject =_projectContext.Projects.Single(
-                    p => p.name == name
-                );    
+                var MatchingProject = _projects.Find<Project>(
+                    project => project.name == name
+                ).FirstOrDefault();
                 return MatchingProject;
             }
             catch (System.Exception)
@@ -65,61 +46,40 @@ namespace task_management_backend_dotnet.Services
 
         public Project Create(Project project)
         {
-            try
+            var MatchingProject = _projects.Find<Project>(
+                p => p.name == project.name
+            ).FirstOrDefault();
+            if(MatchingProject != null)
             {
-                var MatchingProject =_projectContext.Projects.Single(
-                    p => p.name == project.name
-                );
                 throw new ProjectAlreadyExists(
-                    $"Project named: {project.name} already exists."
+                $"Project named: {project.name} already exists."
                 );
-                
             }
-            catch(System.InvalidOperationException)
+            else
             {
-                _projectContext.Projects.Add(project);
-                _projectContext.SaveChanges();
+                _projects.InsertOne(project);
                 return project;
             }
         }
 
-        public Project Update(Project project)
-        {
-            try
-            {
-                var MatchingProject = _projectContext.Projects.Single(
-                    p => p.ProjectId == project.ProjectId
-                );
-                MatchingProject.creationTime = project.creationTime;
-                MatchingProject.name = project.name;
-                _projectContext.SaveChanges();
-                return MatchingProject;
-            }
-            catch (System.InvalidOperationException)
-            {
-                throw new ProjectNotFound(
-                    $"Project with id: {project.ProjectId} was not found"
-                );
-            }
-        }
+     
 
-        public bool Delete(int id)
+        public bool Delete(string name)
         {
-            try
-            {
-                var MatchingProject = _projectContext.Projects.Single(
-                    p => p.ProjectId == id
-                );
-                _projectContext.Projects.Remove(MatchingProject);
-                _projectContext.SaveChanges(); 
-                return true;
-            }
-            catch (System.InvalidOperationException)
+            var MatchingProject = _projects.Find<Project>(
+                p => p.name == name
+            ).FirstOrDefault();
+            if(MatchingProject == null)
             {
                 throw new ProjectNotFound(
-                    $"Project with id: {id} was not found."
+                    $"Project with name: {name} was not found."
                 );
             }
+            else
+            {
+                _projects.DeleteOne(project => project.id == MatchingProject.id);
+                return true;
+            }   
         }
     }
 

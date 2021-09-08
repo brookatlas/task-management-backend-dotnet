@@ -33,21 +33,6 @@ namespace task_management_backend_dotnet.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Project> GetById(int id)
-        {
-            try
-            {
-                var result = _projectService.Get(id);
-                return Ok(result);
-            }
-            catch (ProjectNotFound)
-            {
-                return StatusCode(404, new Dictionary<string, string>() {
-                    {"error", $"project with id {id} was not found"}
-                });
-            }
-        }
 
         [HttpPost("")]
         public ActionResult<Project> Create(Project project)
@@ -65,28 +50,13 @@ namespace task_management_backend_dotnet.Controllers
             }
         }
 
-        [HttpPatch("{id}")]
-        public ActionResult<Project> Update(Project project)
-        {
-           try
-           {
-                var UpdatedProject = _projectService.Update(project);
-                return Ok(UpdatedProject);
-           }
-           catch (ProjectNotFound)
-           {
-               return StatusCode(404, new Dictionary<string, string>() {
-                    {"error", $"project named {project.name} was not found"}
-               });
-           }
-        }
 
-        [HttpDelete("{id}")]
-        public ActionResult<Project> Delete(int id)
+        [HttpDelete("{name}")]
+        public ActionResult<Project> Delete(string name)
         {
            try
            {
-                var deleted = _projectService.Delete(id);
+                var deleted = _projectService.Delete(name);
                 if(deleted)
                 {
                     return Ok();
@@ -99,7 +69,7 @@ namespace task_management_backend_dotnet.Controllers
            catch (ProjectNotFound)
            {
                return StatusCode(404, new Dictionary<string, string>() {
-                    {"error", $"project with id {id} was not found"}
+                    {"error", $"project with id {name} was not found"}
                });
            }
         }
