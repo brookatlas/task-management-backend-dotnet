@@ -1,7 +1,6 @@
 make.exe --dry-run --always-make --keep-going --print-directory
 make: Entering directory 'c:/Users/israe/Desktop/projects/task-management-backend-dotnet'
-docker build ./ --tag task-management-backend-dotnet:latest --no-cache
+docker build ./ --tag task-management-backend-dotnet:latest
 docker-compose -f docker-compose.yml up -d --force-recreate
- 
 make: Leaving directory 'c:/Users/israe/Desktop/projects/task-management-backend-dotnet'
  

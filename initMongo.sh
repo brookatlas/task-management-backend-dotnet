@@ -1,0 +1,1 @@
+cat initMongo.js | mongo -u root -p Password1
