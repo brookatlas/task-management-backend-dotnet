@@ -77,7 +77,10 @@
             "dependsOn": [
                 "docker-build: debug"
             ],
-            "dockerRun": {},
+            "dockerRun": 
+            {
+                "envFiles": [".env"]
+            },
             "netCore": {
                 "appProject": "${workspaceFolder}/task-management-backend-dotnet.csproj",
                 "enableDebugging": true
@@ -89,9 +92,13 @@
             "dependsOn": [
                 "docker-build: release"
             ],
-            "dockerRun": {},
+            "dockerRun": {
+                "envFiles": [".env"]
+            },
             "netCore": {
-                "appProject": "${workspaceFolder}/task-management-backend-dotnet.csproj"
+                "appProject": "${workspaceFolder}/task-management-backend-dotnet.csproj",
+                "enableDebugging": true,
+                "configureSsl": true,
             }
         }
     ]

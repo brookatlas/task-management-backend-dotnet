@@ -1,23 +1,23 @@
 # Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
 
-version: '3.4'
+version: '3.9'
 
 services:
   task-management-backend:
-    image: task-management-backend-dotnet
     container_name: task-management-backend
+    image: task-management-backend-dotnet
     build:
       context: .
       dockerfile: ./Dockerfile
     environment: 
-      CONNECTION_STRING: mongodb://TaskManagement:Password1@localhost:27017/TaskManagement
-      DB_COLLECTION: Projects
+      CONNECTION_STRING: mongodb://TaskManagement:Password1@task-management-db:27017/TaskManagement
+      DB_COLLECTION: projects
       DB_NAME: TaskManagement
     ports:
       - 4000:4000
   task-management-db:
-    image: mongo
     container_name: task-management-db
+    image: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root

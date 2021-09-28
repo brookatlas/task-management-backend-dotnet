@@ -2,5 +2,10 @@ make.exe --dry-run --always-make --keep-going --print-directory
 make: Entering directory 'c:/Users/israe/Desktop/projects/task-management-backend-dotnet'
 docker build ./ --tag task-management-backend-dotnet:latest
 docker-compose -f docker-compose.yml up -d --force-recreate
+ 
+timeout 2
+docker cp initMongo.js task-management-db:/
+docker cp initMongo.sh task-management-db:/
+docker exec -it task-management-db bash initMongo.sh
 make: Leaving directory 'c:/Users/israe/Desktop/projects/task-management-backend-dotnet'
  

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep 16 16:29:29 2021
+# Make data base, printed on Tue Sep 28 19:02:34 2021
 
 # Variables
 
@@ -21,23 +21,23 @@ USERPROFILE = C:\Users\israe
 # environment
 LOCALAPPDATA = C:\Users\israe\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a43ae851-81b0-4bc9-a9be-43b88dca2098-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-32ce4af3-bec8-49ba-ab14-2f0853da7624-sock
 # environment
 VSCODE_CWD = C:\Users\israe\AppData\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
-SYSTEMROOT = C:\Windows
+SYSTEMROOT = C:\WINDOWS
 # environment
 PROCESSOR_LEVEL = 25
 # environment
-PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19252_QVZAGMWCWCUEUEND
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_28600_KFNXATHVAYZWMRVE
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -51,7 +51,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\israe\AppData\Roaming\Code\CachedData\83bd43bc519d15e50c4272c6cf5c1479df196a4d
+VSCODE_CODE_CACHE_PATH = C:\Users\israe\AppData\Roaming\Code\CachedData\7f6ab5485bbc008386c4386d08766667e155244e
 # environment
 LANG = C
 # default
@@ -91,7 +91,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 19252
+VSCODE_PID = 28600
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -119,15 +119,15 @@ RUBYOPT = -Eutf-8
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
-COMSPEC = C:\Windows\system32\cmd.exe
+COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
-WINDIR = C:\Windows
+WINDIR = C:\WINDOWS
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Ruby24\bin;C:\Ruby23-x64\bin;C:\Users\israe\AppData\Local\Microsoft\WindowsApps;C:\mingw\bin;C:\Program Files\JetBrains\RubyMine 2021.2.1\bin;C:\Users\israe\AppData\Roaming\npm;C:\Users\israe\.dotnet\tools;C:\RUBY;C:\mongosh\bin;C:\mongotools\bin
+PATH = C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Ruby24\bin;C:\Ruby23-x64\bin;C:\Users\israe\AppData\Local\Microsoft\WindowsApps;C:\mingw\bin;C:\Program Files\JetBrains\RubyMine 2021.2.1\bin;C:\Users\israe\AppData\Roaming\npm;C:\Users\israe\.dotnet\tools;C:\RUBY;C:\mongosh\bin;C:\mongotools\bin
 # environment
 COMPUTERNAME = DESKTOP-AHBNJFQ
 # default
@@ -162,6 +162,8 @@ USERDOMAIN = DESKTOP-AHBNJFQ
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
+# environment
+__COMPAT_LAYER = DetectorsAppHealth DetectorsShimLog Installer
 # makefile (from 'makefile', line 1)
 .DEFAULT_GOAL := up
 # default
@@ -189,7 +191,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\israe\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\517e7dda79cbeca09a59a446d0d0845f-1.60.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\517e7dda79cbeca09a59a446d0d0845f-1.60.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -198,10 +200,9 @@ VSCODE_IPC_HOOK = \\.\pipe\517e7dda79cbeca09a59a446d0d0845f-1.60.1-main-sock
 SUFFIXES := 
 # environment
 ALLUSERSPROFILE = C:\ProgramData
-# environment
-DEBUG = WARN
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := targe 
+t-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 2100
 # environment
@@ -215,9 +216,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD
 
 # Directories
 
-# . (key c:/Users/israe/Desktop/projects/task-management-backend-dotnet, mtime 1631797485): 27 files, no impossibilities.
+# . (key c:/Users/israe/Desktop/projects/task-management-backend-dotnet, mtime 1631799902): 28 files, no impossibilities.
 
-# 27 files, no impossibilities in 1 directories.
+# 28 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -225,11 +226,11 @@ PROCESSOR_IDENTIFIER = AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD
 
 # Files
 
-up: build run
+up: build run init-db
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 20):
+#  recipe to execute (from 'makefile', line 23):
 	
 
 clean: stop
@@ -245,7 +246,7 @@ stop:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 17):
+#  recipe to execute (from 'makefile', line 20):
 	docker-compose -f docker-compose.yml down
 
 # Not a target:
@@ -266,7 +267,7 @@ run:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 14):
+#  recipe to execute (from 'makefile', line 17):
 	docker-compose -f docker-compose.yml up -d --force-recreate
 
 build:
@@ -274,7 +275,8 @@ build:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 8):
+#  recipe to execute (f 
+rom 'makefile', line 8):
 	docker build ./ --tag task-management-backend-dotnet:latest
 
 init-db:
@@ -283,12 +285,15 @@ init-db:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 11):
-	mongosh mongodb://root:Password1@127.0.0.1:27017/ .\initMongo.js
+	timeout 2
+	docker cp initMongo.js task-management-db:/
+	docker cp initMongo.sh task-management-db:/
+	docker exec -it task-management-db bash initMongo.sh
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-09-16 15:57:52
+#  Last modified 2021-09-16 16:53:51
 #  File has been updated.
 #  Successfully updated.
 
@@ -298,19 +303,19 @@ makefile:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/34=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/35=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 406 B / avg = 10 B
-# current buf: size = 8174 B / used = 406 B / count = 37 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 414 B / avg = 10 B
+# current buf: size = 8174 B / used = 414 B / count = 38 / avg = 10 B
 
-# strcache performance: lookups = 56 / hit rate = 33%
+# strcache performance: lookups = 58 / hit rate = 34%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=0/56=0%
-# Finished Make data base on Thu Sep 16 16:29:29 2021
+# Load=38/8192=0%, Rehash=0, Collisions=0/58=0%
+# Finished Make data base on Tue Sep 28 19:02:34 2021
 
  
