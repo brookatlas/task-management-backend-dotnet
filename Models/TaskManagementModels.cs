@@ -11,15 +11,25 @@ namespace task_management_backend_dotnet.Models
         public string id {get;set;}
         public string name {get; set;}
 
-        public List<Task> tasks{get;set;}
+        public List<Section> sections {get;set;}
     }
 
 
+    public class Section
+    {
+        public string id{get;set;}
+        public string name{get;set;}
+        public List<Task> tasks;
+    }
     public class Task
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string id {get; set;}
+
+        public int type {get;set;}
+
+        public string title {get; set;}
+        public string content {get;set;}
+
     }
 
     public interface ITaskManagementDatabaseSettings

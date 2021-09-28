@@ -22,6 +22,12 @@ namespace task_management_backend_dotnet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options => {
+                options.AddPolicy(name: "taskManagementCorsOptions",
+                builder => {
+                    builder.WithOrigins("*");
+                });
+            });
             services.AddScoped<TaskMangementDatabaseSettings>(
                 provider => new TaskMangementDatabaseSettings(
                     System.Environment.GetEnvironmentVariable("CONNECTION_STRING"),
@@ -41,6 +47,7 @@ namespace task_management_backend_dotnet
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
+            app.UseCors("taskManagementCorsOptions");
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "task_management_backend_dotnet v1"));
             //app.UseHttpsRedirection();
             app.UseRouting();

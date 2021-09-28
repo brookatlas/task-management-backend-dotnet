@@ -6,6 +6,7 @@ services:
   task-management-backend:
     container_name: task-management-backend
     image: task-management-backend-dotnet
+    restart: always
     build:
       context: .
       dockerfile: ./Dockerfile
